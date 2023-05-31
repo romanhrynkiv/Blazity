@@ -1,6 +1,7 @@
 import Breadcrumbs from '../components/Breadcrumbs';
 import Image from "next/image";
 import Head from "next/head";
+import {getServerSideCache} from "../ustils/cache";
 
 const Subpage = ({serverData}) => {
     const imageLoader = ({src}) => {
@@ -38,12 +39,36 @@ const Subpage = ({serverData}) => {
 };
 
 export async function getServerSideProps() {
-    const response = await fetch('http://dynamikfabrikken.com.nt26.unoeuro-server.com/subpage/');
-    const data = await response.json()
-    return {
-        props: {
-            serverData: data
-        }
+    const cache = getServerSideCache();
+
+    const cacheKey = 'subpage';
+
+    if (cache.has(cacheKey)) {
+        return {
+            props: {
+                serverData: cache.get(cacheKey),
+            },
+        };
+    }
+
+    try {
+        const response = await fetch('http://dynamikfabrikken.com.nt26.unoeuro-server.com/subpage/');
+        const data = await response.json();
+
+        cache.set(cacheKey, data);
+
+        return {
+            props: {
+                serverData: data,
+            },
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                serverData: null,
+            },
+        };
     }
 }
 
