@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import {getServerSideCache} from "../ustils/cache";
 
-const Home = ({serverData}) => {
+const Home = ({serverData}:any) => {
     return (
         <>
             <Head>

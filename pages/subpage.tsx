@@ -3,8 +3,8 @@ import Image from "next/image";
 import Head from "next/head";
 import {getServerSideCache} from "../ustils/cache";
 
-const Subpage = ({serverData}) => {
-    const imageLoader = ({src}) => {
+const Subpage = ({serverData}:any) => {
+    const imageLoader = ({src}:{src: any}) => {
          return 'http://dynamikfabrikken.com.nt26.unoeuro-server.com' + serverData.content.media.url
     }
     return (
@@ -28,6 +28,7 @@ const Subpage = ({serverData}) => {
                         'http://dynamikfabrikken.com.nt26.unoeuro-server.com' +
                         serverData.content.media.url
                     }
+                    unoptimized
                     width={serverData.content.media.width}
                     alt={serverData.content.media.name}
                     height={serverData.content.media.height}
