@@ -28,7 +28,6 @@ const Subpage = ({serverData}:any) => {
                         'http://dynamikfabrikken.com.nt26.unoeuro-server.com' +
                         serverData.content.media.url
                     }
-                    unoptimized
                     width={serverData.content.media.width}
                     alt={serverData.content.media.name}
                     height={serverData.content.media.height}
