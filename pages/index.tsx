@@ -1,26 +1,31 @@
 import Head from "next/head";
 import Link from "next/link";
-import {getServerSideCache} from "../ustils/cache";
+import LRUCache from 'lru-cache';
 
-const Home = ({serverData}:any) => {
+const cache = new LRUCache({
+    max: 100,
+    maxAge: 1000 * 60 * 60,
+});
+
+const Home = ({ serverData }: any) => {
     return (
         <>
+
             <Head>
                 <title>{serverData.alias}</title>
             </Head>
+
             <div className='container mx-auto px-4 py-2'>
+                <Link href='subpage' className="text-blue-500 hover:underline m-5">
+                    Subpage
+                </Link>
                 <p className="text-4xl font-bold text-center pt-4">{serverData.content.title}</p>
             </div>
-            <Link  href={'/subpage'}>TAK</Link>
         </>
-
     );
 };
 
-
 export async function getServerSideProps() {
-    const cache = getServerSideCache();
-
     const cacheKey = 'Home';
 
     if (cache.has(cacheKey)) {
