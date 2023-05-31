@@ -30,7 +30,7 @@ const Subpage = ({ serverData }: any) => {
                         className='rounded-md mt-4'
                         loader={imageLoader}
                         src={
-                            '/topimg.jpeg'
+                            'https://hilarious-parfait-8876c0.netlify.app/topimg.jpeg'
                         }
                         width={serverData.content.media.width}
                         alt={serverData.content.media.name}
