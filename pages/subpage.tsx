@@ -30,7 +30,7 @@ const Subpage = ({ serverData }: any) => {
                         className='rounded-md mt-4'
                         loader={imageLoader}
                         src={
-                            'http://dynamikfabrikken.com.nt26.unoeuro-server.com' + serverData.content.media.url
+                            '/topimg.jpeg'
                         }
                         width={serverData.content.media.width}
                         alt={serverData.content.media.name}
