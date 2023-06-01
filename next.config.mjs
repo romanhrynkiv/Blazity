@@ -22,12 +22,13 @@ config.headers = () => {
       headers: [
         {
           key: "Cache-Control",
-          value: "public, max-age=3600",
+          value: "no-cache, no-store, must-revalidate",
         },
       ],
     },
   ];
 };
+
 
 const withBundleAnalyzerConfig = withBundleAnalyzer({ enabled: env.ANALYZE });
 
