@@ -26,9 +26,9 @@ const Subpage = ({ serverData }: any) => {
                         className="mt-4 prose px-5"
                         dangerouslySetInnerHTML={{ __html: serverData.content.htmlString }}
                     ></div>
-                    <Image
+                    <img
                         className='rounded-md mt-4'
-                        loader={imageLoader}
+                        // loader={imageLoadereLoaderader}
                         src={
                             'https://hilarious-parfait-8876c0.netlify.app/topimg.jpeg'
                         }
