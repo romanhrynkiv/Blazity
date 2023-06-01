@@ -54,7 +54,11 @@ export async function getServerSideProps() {
     }
 
     try {
-        const response = await fetch('http://dynamikfabrikken.com.nt26.unoeuro-server.com/subpage/');
+        const response = await fetch('http://dynamikfabrikken.com.nt26.unoeuro-server.com/subpage/', {
+            headers: {
+                'Cache-Control': 'max-age=3600',
+            },
+        });
         const data = await response.json();
 
         cache.set(cacheKey, data);
@@ -73,5 +77,6 @@ export async function getServerSideProps() {
         };
     }
 }
+
 
 export default Subpage;

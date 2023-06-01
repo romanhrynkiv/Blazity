@@ -37,7 +37,11 @@ export async function getServerSideProps() {
     }
 
     try {
-        const response = await fetch('http://dynamikfabrikken.com.nt26.unoeuro-server.com/');
+        const response = await fetch('http://dynamikfabrikken.com.nt26.unoeuro-server.com/', {
+            headers: {
+                'Cache-Control': 'max-age=3600',
+            },
+        });
         const data = await response.json();
 
         cache.set(cacheKey, data);
